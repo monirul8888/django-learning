@@ -8,8 +8,13 @@ def home(request):
         {"name" : "Antor", "dept": "EEE"}
     ]
 
+    vegetables = ["Tomatoo", "Pumpkin", "Potatoo", "Ladisfinger"]
 
-    return render(request, "index.html", context={"peoples": peoples})
+
+    return render(request, "index.html", context={"peoples": peoples, "vegetables": vegetables})
 
 def about(request):
-    return HttpResponse("<h3> <b> BSc. in CSE </b> </h3>")
+    return render(request, "about.html")
+
+def contact(request):
+    return render(request, "contact.html")
