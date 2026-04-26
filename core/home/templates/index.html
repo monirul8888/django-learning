@@ -22,12 +22,20 @@
         <tr>
             <th>Name</th>
             <th>Dept</th>
+            <th>BEST/GOOD</th>
          </tr>
          {% for people in peoples %}
        
         <tr>
             <td>{{people.name}}</td>
             <td>{{people.dept}}</td>
+            <td>{% if people.dept == "CSE" %}
+                BEST
+                {%else%}
+                GOOD
+                {% endif %}
+            </td>
+            
 
         </tr>
 
