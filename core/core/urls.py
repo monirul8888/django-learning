@@ -12,7 +12,8 @@ urlpatterns = [
     path('about/', about, name='about'),
     path("contact/", contact, name="contact"),
     path('admin/', admin.site.urls),
-    path("delete_recipe/<id>/", delete_recipe, name = "delete_recipe")
+    path("delete_recipe/<id>/", delete_recipe, name = "delete_recipe"),
+    path("update_recipe/<id>/", update_recipe, name = "update_recipe")
 ]
 
 # Add this only once, at the end
