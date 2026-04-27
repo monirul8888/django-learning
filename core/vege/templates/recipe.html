@@ -67,6 +67,7 @@
                                 <th>Recipe Name</th>
                                 <th>Description</th>
                                 <th>Image</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
 
@@ -77,6 +78,9 @@
                                 <td>{{ r.desc }}</td>
                                 <td>
                                     <img src="{{ r.image.url }}" width="100">
+                                </td>
+                                <td>
+                                    <a href="/delete_recipe/{{r.id}}/" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             {% endfor %}
