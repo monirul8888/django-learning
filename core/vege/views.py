@@ -13,4 +13,6 @@ def recipe(request):
             desc=desc,
             image=image
         )
+
+        return redirect("/recipe/")
     return render(request, "recipe.html")
