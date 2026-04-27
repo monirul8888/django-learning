@@ -15,4 +15,5 @@ def recipe(request):
         )
 
         return redirect("/recipe/")
-    return render(request, "recipe.html")
+    recipes = Recipe.objects.all()
+    return render(request, "recipe.html", {"recipes": recipes})
