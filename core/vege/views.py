@@ -38,3 +38,11 @@ def update_recipe(request, id):
         return redirect("/recipe/")
 
     return render(request, "update_recipe.html", {"recipe": recipe})
+
+
+
+def login_page(request):
+    return render(request, "login.html")
+
+def register(request):
+    return render(request, "register.html")

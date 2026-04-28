@@ -10,6 +10,8 @@ urlpatterns = [
     path('', home, name='home'),
     path("recipe/", recipe, name="recipe"),
     path('about/', about, name='about'),
+    path('login/', login_page, name='login_page'),
+    path('register/', register, name='register'),
     path("contact/", contact, name="contact"),
     path('admin/', admin.site.urls),
     path("delete_recipe/<id>/", delete_recipe, name = "delete_recipe"),
