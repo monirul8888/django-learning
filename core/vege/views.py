@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 
 from django.contrib.auth.models import User
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
@@ -61,6 +61,11 @@ def login_page(request):
             return redirect("/recipe/")
 
     return render(request, "login.html")
+
+
+def log_out_page(request):
+    logout(request)
+    return redirect("/login")
 
 
 
