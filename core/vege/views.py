@@ -2,6 +2,12 @@ from django.shortcuts import render, redirect
 from .models import Recipe
 from django.shortcuts import get_object_or_404
 
+from django.contrib.auth.models import User
+
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+
+
 def recipe(request):
     if request.method == "POST":
         recipe_name = request.POST.get('recipe_name')
@@ -40,9 +46,44 @@ def update_recipe(request, id):
     return render(request, "update_recipe.html", {"recipe": recipe})
 
 
-
 def login_page(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is None:
+            messages.error(request, "Invalid username or password")
+            return redirect("/login/")
+        else:
+            login(request, user)
+            return redirect("/recipe/")
+
     return render(request, "login.html")
 
+
+
+
 def register(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        if User.objects.filter(username=username).exists():
+            return redirect("/register/")
+
+        user=User.objects.create_user(
+            username=username,
+            
+            first_name=name
+        )
+
+        user.set_password(password)
+        user.save()
+
+
+        return redirect("/login/")
+
     return render(request, "register.html")
