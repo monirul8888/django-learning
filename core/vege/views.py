@@ -6,8 +6,9 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url="/login/")
 def recipe(request):
     if request.method == "POST":
         recipe_name = request.POST.get('recipe_name')
